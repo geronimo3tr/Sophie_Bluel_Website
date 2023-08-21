@@ -18,8 +18,22 @@ function createButton(buttonInfo) {
   button.id = buttonInfo.id;
   filter.appendChild(button); // Append the button to the filter
 
-  button.addEventListener("clicl", () => {
+  button.addEventListener("click", () => {
     filterbutton(buttonInfo.id);
+  });
+}
+
+function filterbutton(categoryId) {
+  selectedCategoryId = categoryId;
+
+  const images = document.querySelectorAll(".gallery figure");
+  images.forEach((image) => {
+    const imageCategory = image.querySelector("img").dataset.category;
+    if (selectedCategoryId == "0" || selectedCategoryId == imageCategory) {
+      image.style.display = "block"; // Show images matching the selected category
+    } else {
+      image.style.display = "none"; // Hide images not matching the selected category
+    }
   });
 }
 
