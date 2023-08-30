@@ -45,8 +45,6 @@ async function addButton() {
   }
 }
 
-addButton();
-
 async function fetchWorkAPI() {
   try {
     const response = await fetch("http://localhost:5678/api/works");
@@ -88,4 +86,3 @@ async function addImage() {
     createImage(imageInfo);
   }
 }
-addImage();

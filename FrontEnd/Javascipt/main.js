@@ -1,0 +1,2 @@
+addImage();
+addButton();
