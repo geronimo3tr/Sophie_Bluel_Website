@@ -1,21 +1,34 @@
 const form = document.querySelector("form");
 
-form.addEventListener("submit", async function () {
-  const email = document.querySelector("input[name='email']");
-  const password = document.querySelector("input[name='password']");
-  console.log(email);
-  const user = {
-    email: "sphie.bluel@test.tld",
-    password: "S0phie",
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const login = {
+    email: document.querySelector("input[name='email']").value,
+    password: document.querySelector("input[name='password']").value,
   };
+
+  console.log(login);
+
   const response = await fetch("http://localhost:5678/api/users/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
-    body: JSON.stringify(user),
+    body: JSON.stringify(login),
   });
-  alert(response.status);
-  const result = await response.json();
-  console.log(result);
+  if (response.ok === true) {
+    // Successful login
+    const result = await response.json();
+    console.log(result);
+    window.location.href = "../index.html";
+  } else if (response.status === 401) {
+    // Unauthorized (wrong email or password)
+    alert("Erreur dans l'identifiant ou le mot de passe");
+  } else if (response.status === 404) {
+    // Unauthorized (wrong email or password)
+    alert("Erreur dans l'identifiant ou le mot de passe");
+  } else {
+    // Handle other status codes as needed
+    alert("An error occurred. Please try again later.");
+  }
 });
