@@ -7,8 +7,6 @@ form.addEventListener("submit", async function (e) {
     password: document.querySelector("input[name='password']").value,
   };
 
-  console.log(login);
-
   const response = await fetch("http://localhost:5678/api/users/login", {
     method: "POST",
     headers: {
@@ -19,7 +17,8 @@ form.addEventListener("submit", async function (e) {
   if (response.ok === true) {
     // Successful login
     const result = await response.json();
-    console.log(result);
+    localStorage.setItem("token", result.token); /*keep token*/
+
     window.location.href = "../index.html";
   } else if (response.status === 401) {
     // Unauthorized (wrong email or password)
@@ -29,6 +28,6 @@ form.addEventListener("submit", async function (e) {
     alert("Erreur dans l'identifiant ou le mot de passe");
   } else {
     // Handle other status codes as needed
-    alert("An error occurred. Please try again later.");
+    alert("Une erreur est survenue . réessayer plus tard.");
   }
 });
