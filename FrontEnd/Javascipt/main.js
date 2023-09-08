@@ -59,10 +59,11 @@ function EditionMode() {
   body.appendChild(modal);
   modal.classList.add("modal");
   modal.innerHTML = `
-  <span class="Modaltitle">Galerie photo</span>
-  <script></script>
-  <i class="fa-solid fa-xmark" onclick="closeEditionMode()"></i>
+  <span class="Modaltitle">Galerie photo<i class="fa-solid fa-xmark" onclick="closeEditionMode()"></i></span>
+  <div class="modal-gallery"></div>
+  <input type="submit" id="addphoto" value="Ajouter une photo" />
 `;
+  addImage();
 }
 
 function closeEditionMode() {

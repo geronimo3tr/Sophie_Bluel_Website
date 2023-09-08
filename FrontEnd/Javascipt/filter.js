@@ -65,24 +65,47 @@ async function fetchWorkAPI() {
 }
 
 const gallery = document.querySelector(".gallery");
+const modal = document.querySelector("modal");
 
-function createImage(imageInfo) {
+function createImage(imageInfo, container, title = true, trash = false) {
   const figure = document.createElement("figure");
+  const imageContainer = document.createElement("div");
   const image = document.createElement("img");
-  const figcaption = document.createElement("figcaption");
+  imageContainer.classList.add("image-container");
+
   image.src = imageInfo.URL;
   image.alt = imageInfo.title;
   image.id = imageInfo.id;
   image.dataset.category = imageInfo.categoryId;
-  figcaption.textContent = imageInfo.title;
-  gallery.appendChild(figure);
+
+  container.appendChild(figure);
+  figure.appendChild(imageContainer); // Append to the specified container
   figure.appendChild(image);
-  figure.appendChild(figcaption);
+  if (title) {
+    const figcaption = document.createElement("figcaption");
+    figcaption.textContent = imageInfo.title;
+    figure.appendChild(figcaption);
+  }
+  if (trash) {
+    const trashIcon = document.createElement("i");
+    trashIcon.classList.add("fa-solid", "fa-trash-can");
+    figure.appendChild(trashIcon);
+    imageContainer.appendChild(trashIcon);
+  }
+}
+
+async function addImageToGalleryAndModal(imageInfo) {
+  // Create the image in the main gallery
+  createImage(imageInfo, gallery);
+
+  // Create the same image in the modal gallery
+  const modalGallery = document.querySelector(".modal-gallery");
+  createImage(imageInfo, modalGallery, false, true);
 }
 
 async function addImage() {
   const imageData = await fetchWorkAPI();
   for (const imageInfo of imageData) {
-    createImage(imageInfo);
+    addImageToGalleryAndModal(imageInfo); // Add image to both galleries
   }
 }
