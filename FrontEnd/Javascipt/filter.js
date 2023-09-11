@@ -94,17 +94,12 @@ function createImage(imageInfo, container, title = true, trash = false, modalCon
     trashIcon.addEventListener("click", () => {
       console.log(imageInfo);
       FetchDeleteAPI(imageInfo.id);
-      const imageCategory = imageinfo.categoryId;
-
       if (modalContainer) {
-        const modalImage = modalContainer.querySelector(`[data-image-id="${imageInfo.id}"]`);
-        if (modalImage) {
-          modalImage.parentNode.remove();
+        const modalGalleryImage = modalContainer.querySelector(`[id="${imageInfo.id}"]`);
+        if (modalGalleryImage) {
+          modalGalleryImage.parentNode.remove();
         }
       }
-
-      // Remove the image and its related elements from the main gallery
-      figure.remove();
     });
   }
 }

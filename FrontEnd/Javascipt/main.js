@@ -9,13 +9,13 @@ changePageIfLoggedIn();
     */
 
 function changePageIfLoggedIn() {
-  if (isUserLogged()) {
+  if (UserLogged()) {
     changeLoginButton();
     toolbar();
   }
 }
 
-function isUserLogged() {
+function UserLogged() {
   return localStorage.getItem("token") !== null;
 }
 
@@ -72,4 +72,5 @@ function closeEditionMode() {
   const modal = document.querySelector(".modal");
   document.body.removeChild(overlay);
   document.body.removeChild(modal);
+  window.location.href = "index.html";
 }
