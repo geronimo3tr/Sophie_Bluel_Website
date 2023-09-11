@@ -1,6 +1,6 @@
 addImage();
-addButton();
 
+addButton();
 changePageIfLoggedIn();
 /*
     Si le token est présent : 

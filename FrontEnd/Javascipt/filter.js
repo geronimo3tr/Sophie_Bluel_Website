@@ -67,7 +67,7 @@ async function fetchWorkAPI() {
 const gallery = document.querySelector(".gallery");
 const modal = document.querySelector("modal");
 
-function createImage(imageInfo, container, title = true, trash = false) {
+function createImage(imageInfo, container, title = true, trash = false, modalContainer = null) {
   const figure = document.createElement("figure");
   const imageContainer = document.createElement("div");
   const image = document.createElement("img");
@@ -91,6 +91,21 @@ function createImage(imageInfo, container, title = true, trash = false) {
     trashIcon.classList.add("fa-solid", "fa-trash-can");
     figure.appendChild(trashIcon);
     imageContainer.appendChild(trashIcon);
+    trashIcon.addEventListener("click", () => {
+      console.log(imageInfo);
+      FetchDeleteAPI(imageInfo.id);
+      const imageCategory = imageinfo.categoryId;
+
+      if (modalContainer) {
+        const modalImage = modalContainer.querySelector(`[data-image-id="${imageInfo.id}"]`);
+        if (modalImage) {
+          modalImage.parentNode.remove();
+        }
+      }
+
+      // Remove the image and its related elements from the main gallery
+      figure.remove();
+    });
   }
 }
 
@@ -100,7 +115,7 @@ async function addImageToGalleryAndModal(imageInfo) {
 
   // Create the same image in the modal gallery
   const modalGallery = document.querySelector(".modal-gallery");
-  createImage(imageInfo, modalGallery, false, true);
+  createImage(imageInfo, modalGallery, false, true, modalGallery);
 }
 
 async function addImage() {
@@ -109,3 +124,4 @@ async function addImage() {
     addImageToGalleryAndModal(imageInfo); // Add image to both galleries
   }
 }
+fetchDeleteAPI();
