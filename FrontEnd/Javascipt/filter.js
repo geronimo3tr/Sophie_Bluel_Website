@@ -65,9 +65,8 @@ async function fetchWorkAPI() {
 }
 
 const gallery = document.querySelector(".gallery");
-const modal = document.querySelector("modal");
 
-function createImage(imageInfo, container, title = true, trash = false, modalContainer = null) {
+function createImage(imageInfo, container, trash = false, modalContainer = null) {
   const figure = document.createElement("figure");
   const imageContainer = document.createElement("div");
   const image = document.createElement("img");
@@ -81,11 +80,6 @@ function createImage(imageInfo, container, title = true, trash = false, modalCon
   container.appendChild(figure);
   figure.appendChild(imageContainer); // Append to the specified container
   figure.appendChild(image);
-  if (title) {
-    const figcaption = document.createElement("figcaption");
-    figcaption.textContent = imageInfo.title;
-    figure.appendChild(figcaption);
-  }
   if (trash) {
     const trashIcon = document.createElement("i");
     trashIcon.classList.add("fa-solid", "fa-trash-can");
@@ -93,13 +87,7 @@ function createImage(imageInfo, container, title = true, trash = false, modalCon
     imageContainer.appendChild(trashIcon);
     trashIcon.addEventListener("click", () => {
       console.log(imageInfo);
-      FetchDeleteAPI(imageInfo.id);
-      if (modalContainer) {
-        const modalGalleryImage = modalContainer.querySelector(`[id="${imageInfo.id}"]`);
-        if (modalGalleryImage) {
-          modalGalleryImage.parentNode.remove();
-        }
-      }
+      fetchDeleteAPI(imageInfo.id);
     });
   }
 }
@@ -110,7 +98,7 @@ async function addImageToGalleryAndModal(imageInfo) {
 
   // Create the same image in the modal gallery
   const modalGallery = document.querySelector(".modal-gallery");
-  createImage(imageInfo, modalGallery, false, true, modalGallery);
+  createImage(imageInfo, modalGallery, true, modalGallery);
 }
 
 async function addImage() {
@@ -119,4 +107,3 @@ async function addImage() {
     addImageToGalleryAndModal(imageInfo); // Add image to both galleries
   }
 }
-fetchDeleteAPI();

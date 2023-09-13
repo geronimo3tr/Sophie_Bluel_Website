@@ -10,7 +10,7 @@ async function fetchSendWorkAPI() {
   }
 }
 
-async function FetchDeleteAPI(imageId) {
+async function fetchDeleteAPI(imageId) {
   const token = localStorage.getItem("token");
 
   /*delete work depending on id*/

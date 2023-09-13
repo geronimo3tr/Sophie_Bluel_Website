@@ -135,6 +135,10 @@ body {
   font-size: 14px;
 }
 
+.hidden {
+  display: none;
+}
+
 .toolbar {
   display: flex;
   background-color: black;
@@ -160,6 +164,7 @@ span:hover {
   width: 100%;
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.7);
+  margin: 0;
 }
 
 .modal {
@@ -174,7 +179,7 @@ span:hover {
   border-radius: 5px;
 }
 
-.Modaltitle {
+.modal-title {
   display: flex;
   align-items: center;
   justify-content: center;
