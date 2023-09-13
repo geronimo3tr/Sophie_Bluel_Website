@@ -49,9 +49,11 @@ function toolbar() {
 
 function showModalGallery() {
   const modalContainer = document.querySelector(".overlay");
-  const addPhotoButton = document.querySelector("#addphoto");
+  const modalAccesPhoto = document.querySelector(".modal-photo-acces");
+  const figure = document.querySelector("figure");
+  figure.removeAttribute("figcaption");
   modalContainer.classList.remove("hidden");
-  addPhotoButton.addEventListener("click", () => {
+  modalAccesPhoto.addEventListener("click", () => {
     showPhotoGallery();
   });
 }

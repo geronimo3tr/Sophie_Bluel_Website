@@ -188,6 +188,7 @@ span:hover {
   font-family: "Work Sans";
   margin-bottom: 30px;
   gap: 35%;
+  color: black;
 }
 .modal-gallery {
   width: 100%;
@@ -229,9 +230,15 @@ span:hover {
   border-radius: 5px;
 }
 
-#addphoto {
+.modal-photo-acces {
   display: flex;
   justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #1d6154;
+  color: white;
+  padding: 14px 20px;
+  margin: 2em auto;
 }
 
 .addphotocontainer {
@@ -255,8 +262,12 @@ span:hover {
   color: #306685;
   background-color: #cbd6dc;
   width: 173px;
-  pointer-events: none;
-  cursor: pointer;
+  border: none;
+}
+
+.addphotobutton:hover {
+  background-color: #cbd6dc;
+  color: #306685;
 }
 
 .placeholdercontainer {
@@ -450,7 +461,6 @@ input[type="submit"] {
   width: 180px;
   text-align: center;
   border-radius: 60px;
-  margin: 2em auto;
   border: none;
   font-family: "Syne";
 }

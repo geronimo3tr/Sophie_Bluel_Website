@@ -66,16 +66,17 @@
     <section class="overlay hidden">
       <article class="modal-gallery-container">
         <div class="modal">
-          <span class="modal-title">Galerie photo</span>
+          <h1 class="modal-title">Galerie photo</h1>
           <i class="fa-solid fa-xmark" onclick="hideModal('.modal-gallery-container')"></i>
           <div class="modal-gallery"></div>
-          <input type="submit" id="addphoto" value="Ajouter une photo" />
+          <button class="modal-photo-acces">Ajouter une photo</button>
         </div>
       </article>
       <article class="modal-photo-container hidden">
         <div class="modal">
-          <i class="fa-solid fa-arrow-left"></i><span class="modal-title">Ajout Photo</span
-          ><i class="fa-solid fa-xmark" onclick="hideModal()"></i>
+          <i class="fa-solid fa-arrow-left"></i>
+          <h1 class="modal-title">Ajout Photo</h1>
+          <i class="fa-solid fa-xmark" onclick="hideModal()"></i>
           <div class="addphotocontainer">
             <i class="fa-regular fa-image"></i>
             <button class="addphotobutton">+ Ajouter photo</button>
