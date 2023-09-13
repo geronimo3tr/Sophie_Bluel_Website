@@ -1,8 +1,19 @@
-"http://localhost:5678/api/works"; /*send new work*/
-/*delete work depending on id*/
+async function fetchSendWorkAPI() {
+  try {
+    const responseCategorie = await fetch("http://localhost:5678/api/works"); //Call the Api and wait for the response send new work*/
+    const dataCategorie = await responseCategorie.json(); //Extra the json file of the API and wait for the response
+
+    return dataCategorie.map((item) => ({ id: item.id, title: item.title, category: item.categoryId }));
+  } catch (error) {
+    console.error("Error fetching Categorie data:", error);
+    return [];
+  }
+}
+
 async function FetchDeleteAPI(imageId) {
   const token = localStorage.getItem("token");
 
+  /*delete work depending on id*/
   try {
     const response = await fetch(`http://localhost:5678/api/works/${imageId}`, {
       method: "DELETE",

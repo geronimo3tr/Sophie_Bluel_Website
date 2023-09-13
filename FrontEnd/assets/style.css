@@ -177,7 +177,7 @@ span:hover {
 .Modaltitle {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   font-weight: 400;
   font-size: 26px;
   font-family: "Work Sans";
@@ -200,6 +200,19 @@ span:hover {
   position: relative;
 }
 
+.fa-xmark {
+  position: absolute;
+  top: 23px;
+  right: 40px;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.fa-arrow-left {
+  font-size: 26px;
+  cursor: pointer;
+}
+
 .fa-trash-can {
   position: absolute;
   top: 10px;
@@ -214,6 +227,58 @@ span:hover {
 #addphoto {
   display: flex;
   justify-content: center;
+}
+
+.addphotocontainer {
+  height: 169px;
+  background-color: #e8f1f6;
+  margin: 0px 70px 30px 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fa-image {
+  font-size: 68px;
+  color: #b9c5cc;
+  border: none;
+}
+
+.addphotobutton {
+  color: #306685;
+  background-color: #cbd6dc;
+  width: 173px;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.placeholdercontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.title {
+  width: 480px;
+  height: 40px;
+  border: none;
+  box-shadow: 1px 1px 12px #aaa;
+}
+
+#validatephoto {
+  display: flex;
+  justify-content: center;
+  background-color: #a7a7a7;
   width: 237px;
 }
 
@@ -372,14 +437,17 @@ button:hover {
 }
 
 input[type="submit"] {
-  font-family: "Syne";
   font-weight: 700;
   color: white;
   background-color: #1d6154;
+  padding: 14px 20px;
   margin: 2em auto;
   width: 180px;
   text-align: center;
   border-radius: 60px;
+  margin: 2em auto;
+  border: none;
+  font-family: "Syne";
 }
 
 footer nav ul {
@@ -408,14 +476,6 @@ input[type="email"] {
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
-}
-
-input[type="submit"] {
-  background-color: #1d6154;
-  color: white;
-  padding: 14px 20px;
-  border: none;
-  cursor: pointer;
 }
 
 .log-forget {

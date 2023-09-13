@@ -1,5 +1,4 @@
 addImage();
-
 addButton();
 changePageIfLoggedIn();
 /*
@@ -26,7 +25,6 @@ function changeLoginButton() {
   loginButton.addEventListener("click", () => {
     localStorage.removeItem("token");
     window.location.href = "index.html";
-    e.preventDefault();
   });
 }
 
@@ -58,12 +56,49 @@ function EditionMode() {
   const modal = document.createElement("modal");
   body.appendChild(modal);
   modal.classList.add("modal");
+  ModalGallery(modal);
+}
+
+function ModalGallery(modal) {
   modal.innerHTML = `
-  <span class="Modaltitle">Galerie photo<i class="fa-solid fa-xmark" onclick="closeEditionMode()"></i></span>
+  <span class="Modaltitle">Galerie photo</span><i class="fa-solid fa-xmark" onclick="closeEditionMode()"></i>
   <div class="modal-gallery"></div>
   <input type="submit" id="addphoto" value="Ajouter une photo" />
 `;
+  const Addphoto = modal.querySelector("#addphoto");
+  Addphoto.addEventListener("click", () => {
+    AddPhotoButton(modal);
+  });
   addImage();
+}
+
+function AddPhotoButton(modal) {
+  modal.innerHTML = `
+    <i class="fa-solid fa-arrow-left" onclick="ReturnModalGallery(modal)" ></i><span class="Modaltitle">Ajout Photo</span><i class="fa-solid fa-xmark" onclick="closeEditionMode()"></i>
+  <div class="addphotocontainer"><i class="fa-regular fa-image "></i>
+  <button class=addphotobutton>+ Ajouter photo</button>
+  <span>jpg, png : 4mo max</span>
+  </div>
+  <div class=placeholdercontainer>
+  <article class="placeholder">
+  <span>Titre</span>
+  <input class="title" type="text id=title required"/>
+  </article>
+  <article class="placeholder">
+  <span>Catégorie</span>
+  <input class="title" type="text id=categorie required"/>
+  </article>
+  </div>
+  <input type="submit" id="validatephoto" value="Valider" />
+`;
+  const arrowIcon = modal.querySelector(".fa-arrow-left");
+  arrowIcon.addEventListener("click", () => {
+    ReturnModalGallery(modal);
+  });
+}
+
+function ReturnModalGallery(modal) {
+  ModalGallery(modal);
 }
 
 function closeEditionMode() {
