@@ -79,18 +79,23 @@
           <i class="fa-solid fa-xmark" onclick="hideModal()"></i>
           <div class="addphotocontainer">
             <i class="fa-regular fa-image"></i>
-            <button class="addphotobutton">+ Ajouter photo</button>
+            <label class="addphotobutton">
+              <p>+ Ajouter photo</p>
+            <input type="file" accept="image/jpeg, image/png"  id="newImage" required></input>
+          </label>
             <span>jpg, png : 4mo max</span>
           </div>
           <div class="placeholdercontainer">
-            <article class="placeholder">
-              <span>Titre</span>
-              <input class="title" type="text id=title required" />
-            </article>
-            <article class="placeholder">
-              <span>Catégorie</span>
-              <input class="title" type="text id=categorie required" />
-            </article>
+            <div>
+              <label class="placeholder-tittle">Titre</label>
+              <input class="placeholder" type="text id=title required" />
+            </div>
+            <div>
+              <label class="placeholder-tittle">Catégorie</label>
+              <select class="placeholder" id="categorie" name="category">
+                <option value=""></option>
+              </select>
+            </div>
           </div>
           <input type="submit" id="validatephoto" value="Valider" />
         </div>

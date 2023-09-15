@@ -1,6 +1,7 @@
 addImage();
 addButton();
 changePageIfLoggedIn();
+categorieSelect();
 /*
     Si le token est présent : 
     - logout à la place de login (à la fois le texte du bouton et son effet)
@@ -67,6 +68,17 @@ function showPhotoGallery() {
   returnToGallery.addEventListener("click", () => {
     modalPhoto.classList.add("hidden");
     modalGalleryContainer.classList.remove("hidden");
+  });
+}
+
+async function categorieSelect() {
+  const select = document.querySelector("select");
+  const categorieData = await fetchCategorieAPI();
+  categorieData.forEach((categoryInfo) => {
+    const createNewSelect = document.createElement("option");
+    createNewSelect.textContent = categoryInfo.name;
+    createNewSelect.id = categoryInfo.id;
+    select.appendChild(createNewSelect);
   });
 }
 

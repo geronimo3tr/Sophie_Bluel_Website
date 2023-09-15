@@ -239,6 +239,7 @@ span:hover {
   color: white;
   padding: 14px 20px;
   margin: 2em auto;
+  border: none;
 }
 
 .addphotocontainer {
@@ -259,10 +260,19 @@ span:hover {
 }
 
 .addphotobutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #306685;
   background-color: #cbd6dc;
   width: 173px;
-  border: none;
+  height: 40px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+#newImage {
+  display: none;
 }
 
 .addphotobutton:hover {
@@ -278,13 +288,13 @@ span:hover {
   gap: 20px;
 }
 
-.placeholder {
+.placeholder-tittle {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  margin-bottom: 5px;
 }
 
-.title {
+.placeholder {
   width: 480px;
   height: 40px;
   border: none;
