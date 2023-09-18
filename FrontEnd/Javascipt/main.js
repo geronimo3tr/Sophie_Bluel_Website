@@ -75,10 +75,10 @@ async function categorieSelect() {
   const select = document.querySelector("select");
   const categorieData = await fetchCategorieAPI();
   categorieData.forEach((categoryInfo) => {
-    const createNewSelect = document.createElement("option");
-    createNewSelect.textContent = categoryInfo.name;
-    createNewSelect.id = categoryInfo.id;
-    select.appendChild(createNewSelect);
+    const createNewCategorie = document.createElement("option");
+    createNewCategorie.textContent = categoryInfo.name;
+    createNewCategorie.id = categoryInfo.id;
+    select.appendChild(createNewCategorie);
   });
 }
 
@@ -89,4 +89,33 @@ function hideModal() {
   modalContainer.classList.add("hidden");
   modalPhoto.classList.add("hidden");
   modalGalleryContainer.classList.remove("hidden");
+}
+
+function previewImage() {
+  const fileInput = document.getElementById("newImage");
+  const preview = document.getElementById("preview");
+
+  if (fileInput.files && fileInput.files[0]) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      // Check if the preview image already exists
+      if (!preview) {
+        // If not, create a new img element
+        const newImage = document.createElement("img");
+        newImage.src = e.target.result;
+        newImage.alt = "preview";
+        newImage.classList.add("imagePreview");
+
+        // Get the form element and append the new image
+        const form = document.querySelector(".addphotocontainer");
+        form.appendChild(newImage);
+      } else {
+        // If the preview image exists, update its src attribute
+        preview.src = e.target.result;
+      }
+    };
+
+    reader.readAsDataURL(fileInput.files[0]);
+  }
 }

@@ -69,6 +69,7 @@
           <h1 class="modal-title">Galerie photo</h1>
           <i class="fa-solid fa-xmark" onclick="hideModal('.modal-gallery-container')"></i>
           <div class="modal-gallery"></div>
+          <hr />
           <button class="modal-photo-acces">Ajouter une photo</button>
         </div>
       </article>
@@ -77,18 +78,18 @@
           <i class="fa-solid fa-arrow-left"></i>
           <h1 class="modal-title">Ajout Photo</h1>
           <i class="fa-solid fa-xmark" onclick="hideModal()"></i>
-          <div class="addphotocontainer">
+          <form class="addphotocontainer">
             <i class="fa-regular fa-image"></i>
             <label class="addphotobutton">
               <p>+ Ajouter photo</p>
-            <input type="file" accept="image/jpeg, image/png"  id="newImage" required></input>
-          </label>
+              <input type="file" accept="image/jpeg, image/png" id="newImage" required onchange="previewImage()" />
+            </label>
             <span>jpg, png : 4mo max</span>
-          </div>
+          </form>
           <div class="placeholdercontainer">
             <div>
               <label class="placeholder-tittle">Titre</label>
-              <input class="placeholder" type="text id=title required" />
+              <input class="placeholder" type="text" id="title" required />
             </div>
             <div>
               <label class="placeholder-tittle">Catégorie</label>
@@ -97,6 +98,7 @@
               </select>
             </div>
           </div>
+          <hr />
           <input type="submit" id="validatephoto" value="Valider" />
         </div>
       </article>
