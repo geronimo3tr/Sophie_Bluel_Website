@@ -1,7 +1,7 @@
 addImage();
 addButton();
 changePageIfLoggedIn();
-categorieSelect();
+userSelectCategory();
 /*
     Si le token est présent : 
     - logout à la place de login (à la fois le texte du bouton et son effet)
@@ -50,18 +50,18 @@ function toolbar() {
 
 function showModalGallery() {
   const modalContainer = document.querySelector(".overlay");
-  const modalAccesPhoto = document.querySelector(".modal-photo-acces");
+  const AccesUploadModal = document.querySelector(".modal-photo-acces");
   const figure = document.querySelector("figure");
   figure.removeAttribute("figcaption");
   modalContainer.classList.remove("hidden");
-  modalAccesPhoto.addEventListener("click", () => {
-    showPhotoGallery();
+  AccesUploadModal.addEventListener("click", () => {
+    showUploadModal();
   });
 }
 
-function showPhotoGallery() {
+function showUploadModal() {
   const modalGalleryContainer = document.querySelector(".modal-gallery-container");
-  const modalPhoto = document.querySelector(".modal-photo-container");
+  const modalPhoto = document.querySelector(".modal-upload-container");
   const returnToGallery = document.querySelector(".fa-arrow-left");
   modalGalleryContainer.classList.add("hidden");
   modalPhoto.classList.remove("hidden");
@@ -71,7 +71,7 @@ function showPhotoGallery() {
   });
 }
 
-async function categorieSelect() {
+async function userSelectCategory() {
   const select = document.querySelector("select");
   const categorieData = await fetchCategorieAPI();
   categorieData.forEach((categoryInfo) => {
@@ -85,7 +85,7 @@ async function categorieSelect() {
 function hideModal() {
   const modalContainer = document.querySelector(".overlay");
   const modalGalleryContainer = document.querySelector(".modal-gallery-container");
-  const modalPhoto = document.querySelector(".modal-photo-container");
+  const modalPhoto = document.querySelector(".modal-upload-container");
   modalContainer.classList.add("hidden");
   modalPhoto.classList.add("hidden");
   modalGalleryContainer.classList.remove("hidden");
@@ -106,9 +106,8 @@ function previewImage() {
         newImage.src = e.target.result;
         newImage.alt = "preview";
         newImage.classList.add("imagePreview");
-
         // Get the form element and append the new image
-        const form = document.querySelector(".addphotocontainer");
+        const form = document.querySelector(".uploadFormContainer");
         form.appendChild(newImage);
       } else {
         // If the preview image exists, update its src attribute
@@ -119,3 +118,6 @@ function previewImage() {
     reader.readAsDataURL(fileInput.files[0]);
   }
 }
+
+const upload = document.getElementById("upload");
+upload.addEventListener("click", async (e) => {});

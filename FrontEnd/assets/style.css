@@ -243,7 +243,7 @@ span:hover {
   border: none;
 }
 
-.addphotocontainer {
+.uploadFormContainer {
   height: 169px;
   background-color: #e8f1f6;
   margin: 0px 70px 30px 70px;
@@ -252,7 +252,6 @@ span:hover {
   justify-content: center;
   flex-direction: column;
   gap: 10px;
-  overflow: hidden;
 }
 
 .fa-image {
@@ -311,12 +310,16 @@ span:hover {
   cursor: pointer;
 }
 
-#validatephoto {
+#upload {
   display: flex;
   justify-content: center;
   background-color: #a7a7a7;
   width: 237px;
   cursor: pointer;
+}
+
+#upload:hover {
+  background-color: #1d6154;
 }
 
 header {

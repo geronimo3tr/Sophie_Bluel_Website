@@ -73,23 +73,23 @@
           <button class="modal-photo-acces">Ajouter une photo</button>
         </div>
       </article>
-      <article class="modal-photo-container hidden">
+      <article class="modal-upload-container hidden">
         <div class="modal">
           <i class="fa-solid fa-arrow-left"></i>
           <h1 class="modal-title">Ajout Photo</h1>
           <i class="fa-solid fa-xmark" onclick="hideModal()"></i>
-          <form class="addphotocontainer">
+          <form class="uploadFormContainer">
             <i class="fa-regular fa-image"></i>
             <label class="addphotobutton">
               <p>+ Ajouter photo</p>
               <input type="file" accept="image/jpeg, image/png" id="newImage" required onchange="previewImage()" />
             </label>
-            <span>jpg, png : 4mo max</span>
+            <a>jpg, png : 4mo max</a>
           </form>
           <div class="placeholdercontainer">
             <div>
               <label class="placeholder-tittle">Titre</label>
-              <input class="placeholder" type="text" id="title" required />
+              <input class="placeholder" type="text" id="previewImageTitle" required />
             </div>
             <div>
               <label class="placeholder-tittle">Catégorie</label>
@@ -99,7 +99,7 @@
             </div>
           </div>
           <hr />
-          <input type="submit" id="validatephoto" value="Valider" />
+          <input type="submit" id="upload" value="Valider" />
         </div>
       </article>
     </section>

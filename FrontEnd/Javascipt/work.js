@@ -1,12 +1,20 @@
-async function fetchSendWorkAPI() {
-  try {
-    const responseCategorie = await fetch("http://localhost:5678/api/works"); //Call the Api and wait for the response send new work*/
-    const dataCategorie = await responseCategorie.json(); //Extra the json file of the API and wait for the response
-
-    return dataCategorie.map((item) => ({ id: item.id, title: item.title, category: item.categoryId }));
-  } catch (error) {
-    console.error("Error fetching Categorie data:", error);
-    return [];
+async function fetchNewWorkAPI(e) {
+  // Fetch data from the API
+  e.preventDefault();
+  const token = localStorage.getItem("token");
+  const newImage = document.querySelector("input[type=file]").files[0];
+  const response = await fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    headers: {
+      "Content-Type": "multipart/form-data, application/json;charset=utf-8",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (response.ok) {
+    const gallery = document.querySelector(".gallery");
+    const figure = document.createElement("figure");
+    gallery.appendChild(figure);
+    figure.appendChild(newImage);
   }
 }
 
