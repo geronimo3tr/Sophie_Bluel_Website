@@ -89,7 +89,6 @@ function hideModal() {
   modalContainer.classList.add("hidden");
   modalPhoto.classList.add("hidden");
   modalGalleryContainer.classList.remove("hidden");
-  window.location.href = "index.html";
 }
 
 function previewImage() {
@@ -122,13 +121,16 @@ function previewImage() {
 
 const upload = document.getElementById("upload");
 upload.addEventListener("click", async (e) => {
+  e.preventDefault();
+
   const selectedCategory = document.querySelector("select").value;
   const categoryInfo = await fetchCategorieAPI();
   const category = categoryInfo.find((info) => info.name === selectedCategory);
 
   if (category) {
     const categoryID = category.id;
-    sendNewWorkAPI(e, categoryID);
+    await sendNewWorkAPI(e, categoryID);
+    window.location.href = "index.html";
   } else {
     console.error("Selected category not found");
   }
