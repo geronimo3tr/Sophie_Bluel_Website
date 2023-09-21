@@ -231,7 +231,7 @@ span:hover {
   border-radius: 5px;
 }
 
-.modal-photo-acces {
+.button-acces-upload {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,20 +1,27 @@
-async function fetchNewWorkAPI(e) {
-  // Fetch data from the API
+async function sendNewWorkAPI(e, categoryID) {
   e.preventDefault();
+  const formData = new FormData();
+  const newImageInput = document.querySelector("input[type=file]");
+  const newImage = newImageInput.files[0]; // Retrieve the selected file
+
   const token = localStorage.getItem("token");
-  const newImage = document.querySelector("input[type=file]").files[0];
+
+  formData.append("image", newImage);
+  formData.append("title", document.querySelector("#previewImageTitle").value);
+  formData.append("category", categoryID.toString());
+
   const response = await fetch("http://localhost:5678/api/works", {
     method: "POST",
     headers: {
-      "Content-Type": "multipart/form-data, application/json;charset=utf-8",
       Authorization: `Bearer ${token}`,
     },
+    body: formData,
   });
+
   if (response.ok) {
-    const gallery = document.querySelector(".gallery");
-    const figure = document.createElement("figure");
-    gallery.appendChild(figure);
-    figure.appendChild(newImage);
+    // Handle the success case here, if needed
+  } else {
+    console.error("Failed to upload image.");
   }
 }
 

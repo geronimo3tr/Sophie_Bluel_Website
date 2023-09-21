@@ -50,7 +50,7 @@ function toolbar() {
 
 function showModalGallery() {
   const modalContainer = document.querySelector(".overlay");
-  const AccesUploadModal = document.querySelector(".modal-photo-acces");
+  const AccesUploadModal = document.querySelector(".button-acces-upload");
   const figure = document.querySelector("figure");
   figure.removeAttribute("figcaption");
   modalContainer.classList.remove("hidden");
@@ -89,6 +89,7 @@ function hideModal() {
   modalContainer.classList.add("hidden");
   modalPhoto.classList.add("hidden");
   modalGalleryContainer.classList.remove("hidden");
+  window.location.href = "index.html";
 }
 
 function previewImage() {
@@ -120,4 +121,15 @@ function previewImage() {
 }
 
 const upload = document.getElementById("upload");
-upload.addEventListener("click", async (e) => {});
+upload.addEventListener("click", async (e) => {
+  const selectedCategory = document.querySelector("select").value;
+  const categoryInfo = await fetchCategorieAPI();
+  const category = categoryInfo.find((info) => info.name === selectedCategory);
+
+  if (category) {
+    const categoryID = category.id;
+    sendNewWorkAPI(e, categoryID);
+  } else {
+    console.error("Selected category not found");
+  }
+});
