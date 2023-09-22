@@ -19,7 +19,9 @@ async function sendNewWorkAPI(e, categoryID) {
   });
 
   if (response.ok) {
-    // Handle the success case here, if needed
+    createImage(imageInfo, gallery);
+    const modalGallery = document.querySelector(".modal-gallery");
+    createImage(imageInfo, modalGallery, false, true, modalGallery);
   } else {
     console.error("Failed to upload image.");
   }

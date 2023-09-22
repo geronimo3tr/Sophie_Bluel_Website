@@ -51,8 +51,6 @@ function toolbar() {
 function showModalGallery() {
   const modalContainer = document.querySelector(".overlay");
   const AccesUploadModal = document.querySelector(".button-acces-upload");
-  const figure = document.querySelector("figure");
-  figure.removeAttribute("figcaption");
   modalContainer.classList.remove("hidden");
   AccesUploadModal.addEventListener("click", () => {
     showUploadModal();
@@ -121,8 +119,6 @@ function previewImage() {
 
 const upload = document.getElementById("upload");
 upload.addEventListener("click", async (e) => {
-  e.preventDefault();
-
   const selectedCategory = document.querySelector("select").value;
   const categoryInfo = await fetchCategorieAPI();
   const category = categoryInfo.find((info) => info.name === selectedCategory);
@@ -130,7 +126,6 @@ upload.addEventListener("click", async (e) => {
   if (category) {
     const categoryID = category.id;
     await sendNewWorkAPI(e, categoryID);
-    window.location.href = "index.html";
   } else {
     console.error("Selected category not found");
   }
