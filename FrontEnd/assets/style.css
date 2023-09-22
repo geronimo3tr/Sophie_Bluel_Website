@@ -135,10 +135,6 @@ body {
   font-size: 14px;
 }
 
-.hidden {
-  display: none;
-}
-
 .toolbar {
   display: flex;
   background-color: black;

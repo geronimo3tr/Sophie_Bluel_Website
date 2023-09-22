@@ -63,21 +63,21 @@
         </form>
       </section>
     </main>
-    <section class="overlay hidden">
-      <article class="modal-gallery-container">
+    <section>
+      <dialog class="overlay" id="gallery-modal">
         <div class="modal">
           <h1 class="modal-title">Galerie photo</h1>
-          <i class="fa-solid fa-xmark" onclick="hideModal('.modal-gallery-container')"></i>
+          <i class="fa-solid fa-xmark" onclick="closeModal()"></i>
           <div class="modal-gallery"></div>
           <hr />
           <button class="button-acces-upload">Ajouter une photo</button>
         </div>
-      </article>
-      <article class="modal-upload-container hidden">
+      </dialog>
+      <dialog class="overlay" id="upload-modal">
         <div class="modal">
           <i class="fa-solid fa-arrow-left"></i>
           <h1 class="modal-title">Ajout Photo</h1>
-          <i class="fa-solid fa-xmark" onclick="hideModal()"></i>
+          <i class="fa-solid fa-xmark" onclick="closeModal()"></i>
           <form class="uploadFormContainer">
             <i class="fa-regular fa-image"></i>
             <label class="addphotobutton">
@@ -101,7 +101,7 @@
           <hr />
           <input type="submit" id="upload" value="Valider" />
         </div>
-      </article>
+      </dialog>
     </section>
     <footer>
       <nav>

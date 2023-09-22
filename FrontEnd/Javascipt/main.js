@@ -49,23 +49,22 @@ function toolbar() {
 }
 
 function showModalGallery() {
-  const modalContainer = document.querySelector(".overlay");
+  const modalGallery = document.getElementById("gallery-modal");
   const AccesUploadModal = document.querySelector(".button-acces-upload");
-  modalContainer.classList.remove("hidden");
+  modalGallery.show();
   AccesUploadModal.addEventListener("click", () => {
+    modalGallery.close();
     showUploadModal();
   });
 }
 
 function showUploadModal() {
-  const modalGalleryContainer = document.querySelector(".modal-gallery-container");
-  const modalPhoto = document.querySelector(".modal-upload-container");
+  const uploadModal = document.getElementById("upload-modal");
+  uploadModal.show();
   const returnToGallery = document.querySelector(".fa-arrow-left");
-  modalGalleryContainer.classList.add("hidden");
-  modalPhoto.classList.remove("hidden");
   returnToGallery.addEventListener("click", () => {
-    modalPhoto.classList.add("hidden");
-    modalGalleryContainer.classList.remove("hidden");
+    uploadModal.close();
+    showModalGallery();
   });
 }
 
@@ -80,13 +79,11 @@ async function userSelectCategory() {
   });
 }
 
-function hideModal() {
-  const modalContainer = document.querySelector(".overlay");
-  const modalGalleryContainer = document.querySelector(".modal-gallery-container");
-  const modalPhoto = document.querySelector(".modal-upload-container");
-  modalContainer.classList.add("hidden");
-  modalPhoto.classList.add("hidden");
-  modalGalleryContainer.classList.remove("hidden");
+function closeModal() {
+  const dialogs = document.querySelectorAll("dialog");
+  dialogs.forEach((dialog) => {
+    dialog.close();
+  });
 }
 
 function previewImage() {
@@ -126,7 +123,15 @@ upload.addEventListener("click", async (e) => {
   if (category) {
     const categoryID = category.id;
     await sendNewWorkAPI(e, categoryID);
+    removePreviewImage();
   } else {
     console.error("Selected category not found");
   }
 });
+
+function removePreviewImage() {
+  const previewImage = document.querySelector(".imagePreview");
+  if (previewImage) {
+    previewImage.remove();
+  }
+}
