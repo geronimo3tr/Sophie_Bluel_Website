@@ -10,20 +10,35 @@ async function sendNewWorkAPI(e, categoryID) {
   formData.append("title", document.querySelector("#previewImageTitle").value);
   formData.append("category", categoryID.toString());
 
-  const response = await fetch("http://localhost:5678/api/works", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    body: formData,
-  });
+  try {
+    const response = await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
 
-  if (response.ok) {
-    createImage(imageInfo, gallery);
-    const modalGallery = document.querySelector(".modal-gallery");
-    createImage(imageInfo, modalGallery, false, true, modalGallery);
-  } else {
-    console.error("Failed to upload image.");
+    if (response.ok) {
+      const responseData = await response.json();
+      const imageInfo = {
+        id: responseData.id,
+        title: document.querySelector("#previewImageTitle").value,
+        URL: responseData.imageUrl,
+        categoryId: categoryID,
+      };
+
+      // Create a new image element and add it to the gallery
+      createImage(imageInfo, gallery);
+
+      // Create the same image in the modal gallery
+      const modalGallery = document.querySelector(".modal-gallery");
+      createImage(imageInfo, modalGallery, false, true, modalGallery);
+    } else {
+      console.error("Failed to upload image.");
+    }
+  } catch (error) {
+    console.error("Error uploading image:", error);
   }
 }
 
