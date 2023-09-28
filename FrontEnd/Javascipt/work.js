@@ -9,7 +9,6 @@ async function sendNewWorkAPI(e, categoryID) {
   formData.append("image", newImage);
   formData.append("title", document.querySelector("#previewImageTitle").value);
   formData.append("category", categoryID.toString());
-
   try {
     const response = await fetch("http://localhost:5678/api/works", {
       method: "POST",
@@ -34,8 +33,16 @@ async function sendNewWorkAPI(e, categoryID) {
       // Create the same image in the modal gallery
       const modalGallery = document.querySelector(".modal-gallery");
       createImage(imageInfo, modalGallery, false, true, modalGallery);
-    } else {
-      console.error("Failed to upload image.");
+    } else if (!newImage) {
+      const categorie = document.querySelector(".placeholdercontainer");
+      const errorText = document.createElement("p");
+      categorie.appendChild(errorText);
+      errorText.innerText = "veuillez selectionner une image";
+    } else if (!document.querySelector("#previewImageTitle").value) {
+      const categorie = document.querySelector(".placeholdercontainer");
+      const errorText = document.createElement("p");
+      categorie.appendChild(errorText);
+      errorText.innerText = "veuillez selectionner un titre";
     }
   } catch (error) {
     console.error("Error uploading image:", error);

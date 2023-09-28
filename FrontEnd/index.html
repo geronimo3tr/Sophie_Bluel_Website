@@ -45,7 +45,9 @@
         </article>
       </section>
       <section id="portfolio">
-        <h2>Mes Projets</h2>
+        <div class="log-project-tittle">
+          <h2>Mes Projets</h2>
+        </div>
         <div class="filter"></div>
         <div class="gallery"></div>
       </section>
@@ -67,7 +69,7 @@
       <dialog class="overlay" id="gallery-modal">
         <div class="modal">
           <h1 class="modal-title">Galerie photo</h1>
-          <i class="fa-solid fa-xmark" onclick="closeModal()"></i>
+          <i class="fa-solid fa-xmark close-button"></i>
           <div class="modal-gallery"></div>
           <hr />
           <button class="button-acces-upload">Ajouter une photo</button>
@@ -77,27 +79,29 @@
         <div class="modal">
           <i class="fa-solid fa-arrow-left"></i>
           <h1 class="modal-title">Ajout Photo</h1>
-          <i class="fa-solid fa-xmark" onclick="closeModal()"></i>
-          <form class="uploadFormContainer">
-            <i class="fa-regular fa-image"></i>
-            <label class="addphotobutton">
-              <p>+ Ajouter photo</p>
-              <input type="file" accept="image/jpeg, image/png" id="newImage" required onchange="previewImage()" />
-            </label>
-            <a>jpg, png : 4mo max</a>
+          <i class="fa-solid fa-xmark close-button"></i>
+          <form class="uploadForm">
+            <div class="preview-image-container">
+              <i class="fa-regular fa-image"></i>
+              <label class="addphotobutton">
+                <p>+ Ajouter photo</p>
+                <input type="file" accept="image/jpeg, image/png" id="newImage" required onchange="previewImage()" />
+              </label>
+              <a>jpg, png : 4mo max</a>
+            </div>
+            <div class="placeholdercontainer">
+              <div>
+                <label class="placeholder-tittle">Titre</label>
+                <input class="placeholder" type="text" id="previewImageTitle" required />
+              </div>
+              <div>
+                <label class="placeholder-tittle">Catégorie</label>
+                <select class="placeholder" id="categorie" name="category" required>
+                  <option value=""></option>
+                </select>
+              </div>
+            </div>
           </form>
-          <div class="placeholdercontainer">
-            <div>
-              <label class="placeholder-tittle">Titre</label>
-              <input class="placeholder" type="text" id="previewImageTitle" required />
-            </div>
-            <div>
-              <label class="placeholder-tittle">Catégorie</label>
-              <select class="placeholder" id="categorie" name="category">
-                <option value=""></option>
-              </select>
-            </div>
-          </div>
           <hr />
           <input type="submit" id="upload" value="Valider" />
         </div>

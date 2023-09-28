@@ -90,6 +90,7 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  scroll-behavior: smooth;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -148,7 +149,8 @@ body {
 }
 
 .toolbar i:hover,
-span:hover {
+span:hover,
+.button-modifier i:hover {
   cursor: pointer;
 }
 
@@ -239,15 +241,23 @@ span:hover {
   border: none;
 }
 
-.uploadFormContainer {
-  height: 169px;
-  background-color: #e8f1f6;
-  margin: 0px 70px 30px 70px;
+.uploadForm {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.preview-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
+  background-color: #e8f1f6;
+  padding: 14px 156px 14px;
 }
 
 .fa-image {
@@ -280,7 +290,7 @@ span:hover {
 .imagePreview {
   position: absolute;
   height: 169px;
-  width: 170px;
+  max-width: 400px;
 }
 
 .placeholdercontainer {
@@ -289,7 +299,6 @@ span:hover {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  margin-bottom: 50px;
 }
 
 .placeholder-tittle {
@@ -429,18 +438,6 @@ button:hover {
   width: 100%;
 }
 
-.test {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-}
-
-.test img {
-  width: 100%;
-}
-
 #contact {
   width: 50%;
   margin: auto;
@@ -521,6 +518,24 @@ input[type="email"] {
 
 .log-forget a {
   color: #1d6154;
+}
+
+.log-projets-tittle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.button-modifier {
+  display: flex;
+  gap: 5px;
+  margin-top: 9px;
+}
+
+.log-project-tittle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 #footer_login {
