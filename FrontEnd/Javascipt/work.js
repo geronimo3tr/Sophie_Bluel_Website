@@ -33,16 +33,6 @@ async function sendNewWorkAPI(e, categoryID) {
       // Create the same image in the modal gallery
       const modalGallery = document.querySelector(".modal-gallery");
       createImage(imageInfo, modalGallery, false, true, modalGallery);
-    } else if (!newImage) {
-      const categorie = document.querySelector(".placeholdercontainer");
-      const errorText = document.createElement("p");
-      categorie.appendChild(errorText);
-      errorText.innerText = "veuillez selectionner une image";
-    } else if (!document.querySelector("#previewImageTitle").value) {
-      const categorie = document.querySelector(".placeholdercontainer");
-      const errorText = document.createElement("p");
-      categorie.appendChild(errorText);
-      errorText.innerText = "veuillez selectionner un titre";
     }
   } catch (error) {
     console.error("Error uploading image:", error);

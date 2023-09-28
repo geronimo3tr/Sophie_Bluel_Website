@@ -148,17 +148,25 @@ upload.addEventListener("click", async (e) => {
   const categoryInfo = await fetchCategorieAPI();
   const category = categoryInfo.find((info) => info.name === selectedCategory);
 
-  if (category) {
+  const newImageInput = document.querySelector("input[type=file]");
+  const newImage = newImageInput.files[0];
+  const titleInput = document.querySelector("#previewImageTitle");
+
+  if (!category) {
+    showError("Veuillez sélectionner une catégorie");
+  } else if (!newImage) {
+    showError("Veuillez sélectionner une image");
+  } else if (!titleInput.value) {
+    showError("Veuillez sélectionner un titre");
+  } else {
+    // If all conditions pass, remove any existing error messages
+    removeError();
+
     const categoryID = category.id;
     await sendNewWorkAPI(e, categoryID);
     removePreviewImage();
     const uploadForm = document.querySelector(".uploadForm");
     uploadForm.reset();
-  } else {
-    const categorie = document.querySelector(".placeholdercontainer");
-    const errorText = document.createElement("p");
-    categorie.appendChild(errorText);
-    errorText.innerText = "veuillez selectionner une catégorie";
   }
 });
 
@@ -166,5 +174,23 @@ function removePreviewImage() {
   const previewImage = document.querySelector(".imagePreview");
   if (previewImage) {
     previewImage.remove();
+  }
+}
+
+let errorMessageElement = null;
+
+function showError(errorMessage) {
+  if (!errorMessageElement) {
+    const category = document.querySelector(".placeholdercontainer");
+    errorMessageElement = document.createElement("p");
+    category.appendChild(errorMessageElement);
+  }
+  errorMessageElement.innerText = errorMessage;
+}
+
+function removeError() {
+  if (errorMessageElement) {
+    errorMessageElement.remove();
+    errorMessageElement = null;
   }
 }
