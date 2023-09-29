@@ -78,7 +78,7 @@ function createImage(imageInfo, container, title = true, trash = false, modalCon
   image.dataset.category = imageInfo.categoryId;
 
   container.appendChild(figure);
-  figure.appendChild(imageContainer); // Append to the specified container
+  figure.appendChild(imageContainer);
   figure.appendChild(image);
   if (title) {
     const figcaption = document.createElement("figcaption");
@@ -91,7 +91,6 @@ function createImage(imageInfo, container, title = true, trash = false, modalCon
     figure.appendChild(trashIcon);
     imageContainer.appendChild(trashIcon);
     trashIcon.addEventListener("click", () => {
-      console.log(imageInfo);
       fetchDeleteAPI(imageInfo.id);
     });
   }

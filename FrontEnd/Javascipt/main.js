@@ -3,6 +3,7 @@ const buttonAccessUpload = document.querySelector(".button-acces-upload");
 const returnToGallery = document.querySelector(".fa-arrow-left");
 const closeButton = document.querySelector(".close-button");
 const upload = document.getElementById("upload");
+const newImageInput = document.getElementById("newImage");
 
 addImage();
 addButton();
@@ -159,7 +160,6 @@ upload.addEventListener("click", async (e) => {
   } else if (!titleInput.value) {
     showError("Veuillez sélectionner un titre");
   } else {
-    // If all conditions pass, remove any existing error messages
     removeError();
 
     const categoryID = category.id;
@@ -169,6 +169,8 @@ upload.addEventListener("click", async (e) => {
     uploadForm.reset();
   }
 });
+
+newImageInput.addEventListener("change", previewImage);
 
 function removePreviewImage() {
   const previewImage = document.querySelector(".imagePreview");
