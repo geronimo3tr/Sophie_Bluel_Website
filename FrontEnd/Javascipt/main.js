@@ -107,6 +107,7 @@ function closeModal() {
   const dialogs = document.querySelectorAll("dialog");
   dialogs.forEach((dialog) => {
     dialog.close();
+    removePreviewImage();
   });
 }
 
@@ -164,7 +165,6 @@ upload.addEventListener("click", async (e) => {
 
     const categoryID = category.id;
     await sendNewWorkAPI(e, categoryID);
-    removePreviewImage();
     const uploadForm = document.querySelector(".uploadForm");
     uploadForm.reset();
   }
