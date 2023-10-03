@@ -168,6 +168,7 @@ upload.addEventListener("click", async (e) => {
     await sendNewWorkAPI(e, categoryID);
     const uploadForm = document.querySelector(".uploadForm");
     uploadForm.reset();
+    removePreviewImage();
   }
 });
 

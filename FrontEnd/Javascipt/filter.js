@@ -66,7 +66,7 @@ async function fetchWorkAPI() {
 
 const gallery = document.querySelector(".gallery");
 
-function createImage(imageInfo, container, title = true, trash = false, modalContainer = null) {
+function createImage(imageInfo, container, title = true, trash = false) {
   const figure = document.createElement("figure");
   const imageContainer = document.createElement("div");
   const image = document.createElement("img");
@@ -102,7 +102,7 @@ async function addImageToGalleryAndModal(imageInfo) {
 
   // Create the same image in the modal gallery
   const modalGallery = document.querySelector(".modal-gallery");
-  createImage(imageInfo, modalGallery, false, true, modalGallery);
+  createImage(imageInfo, modalGallery, false, true);
 }
 
 async function addImage() {
