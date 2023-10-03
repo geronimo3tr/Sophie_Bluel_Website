@@ -291,6 +291,7 @@ span:hover,
   position: absolute;
   height: 169px;
   max-width: 400px;
+  min-width: 180px;
 }
 
 .placeholdercontainer {
