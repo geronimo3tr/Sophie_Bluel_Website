@@ -90,6 +90,7 @@ returnToGallery.addEventListener("click", () => {
   const uploadModal = document.getElementById("upload-modal");
   uploadModal.close();
   showModalGallery();
+  removePreviewImage();
 });
 
 async function userSelectCategory() {
